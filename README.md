@@ -77,14 +77,14 @@ There will be functionality for emergency calls to the authorities and close fri
 **Tab Navigation** (Tab to Screen)
 
 * To view the map:
-    * On the bottom view bar, click on map tab -> map screen 
+    * On the bottom view bar, click on map tab -> map page 
 * To report an incident:
     * On the bottom bar, click on Report icon -> Report screen.
     
 * To open profile page:
-    * On the bottom bar, click Profile tab -> Profile screen
+    * On the bottom bar, click Profile tab -> Profile page
 * To view incidents:
-    * On the bottom bar, click Home tab -> Home screen
+    * On the bottom bar, click Home tab -> Home page
 
 **Flow Navigation** (Screen to Screen)
 
@@ -105,9 +105,133 @@ There will be functionality for emergency calls to the authorities and close fri
 
 ## Schema 
 [This section will be completed in Unit 9]
+
 ### Models
-[Add table of models]
+
+
+#### User Table
+| Type   | Property      | Description                           |
+| ------ | ------------- | ------------------------------------- |
+| Integer    | user_id        |   Primary key for each user                                    |
+| String | firstname     | user's firstname                      |
+| String | lastname      | user's lastname                       |
+| String | email_address | user's email address                  |
+| File   | profile_image | user's profile image _(optional)_     |
+| File   | user_location | user's profile image _(optional)_     |
+| String | password      | User's password _(Encrypted)_         |
+| Date   | createdAt     | The date when the account was created |
+
+
+#### Emergency Contacts
+
+| Type   | Property     | Description               |
+| ------ | ------------ | ------------------------- |
+| Integer    | user_id      | foreign key to User Table                          |
+| String | firstname    | user's firstname          |
+| String | lastname     | user's lastname           |
+| String | phone_number | Phone number of a contact |
+| String | relation     | Relationship to the user  |
+
+#### User Settings
+
+| Type    | Property       | Description               |
+| ------- | -------------- | ------------------------- |
+| Integer | user_id        | foreign key to User Table |
+| Integer | screen_display | App theme (Dark/Light)    |
+
+
+#### Crime Report
+
+| Type      | Property    | Description                      |
+| --------- | ----------- | -------------------------------- |
+| Integer   | report_id   | Primary key for table            |
+| Integer   | user_id     | Foreign key to User table to know which user submitted the report._(optional)_        |
+| String    | crime_type  | Type of crime that was committed |
+| String    | location    | location of crime                |
+| String    | description | Description of crime             |
+| Timestamp | time        | Time that crime occurred         |
+
+
+
+
+
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
+* Login/Register
+    * (Update/POST)Allow user to register for a Nightlife Account
+    
+* Profile
+    * (Read/GET)Query logged in user object.
+    ```swift
+         let query = PFQuery(className:"Users")
+         query.whereKey("user_id", equalTo: currentUser.id)
+         query.findObjectsInBackground { (user: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let user = user {
+               
+           // Display User data
+            }
+         }
+         ``` 
+* Report
+    * (Update/Post)User can report a crime to be displayed on the NightLife app to all.
+* Map
+    * (Read/GET)Query crime data to be displayed from the database for a specific location.
+    * ```swift
+         let query = PFQuery(className:"CrimeReport")
+         query.whereKey("city", equalTo: location)
+         query.order(byDescending: "createdAt")
+         query.findObjectsInBackground { (crumes: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let crimes = crimes {
+               print("Successfully retrieved \(crimes.count) crimes.")
+            }
+         }
+         ```
+* Home
+    * (Read/GET)Query crime data to be displayed from the database for a specific location.
+     ```swift
+         let query = PFQuery(className:"CrimeReport")
+         query.whereKey("city", equalTo: location)
+         query.order(byDescending: "createdAt")
+         query.findObjectsInBackground { (crumes: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let crimes = crimes {
+               print("Successfully retrieved \(crimes.count) crimes.")
+            }
+         }
+         ```
+* Settings
+    * (Read/GET)Query logged in user object. 
+    * (Read/GET)Query emergency contacts.
+    * (Update/Post)Allow user to update profile image.
+    * (Update/Post)Allow user to add emergency contacts.
+    * (Delete)Allow user to remove emergency contacts.
+
+    ```swift
+         let query = PFQuery(className:"EmergencyContacts")
+         query.whereKey("user_id", equalTo: currentUser.id)
+         query.findObjectsInBackground { (contacts: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let contacts = contacts {
+               print("Successfully retrieved \(contacts.count) contacts.")
+           // Display Emergency Contatcs
+            }
+         }
+         ```
+    ```swift
+         let query = PFQuery(className:"Users")
+         query.whereKey("user_id", equalTo: currentUser.id)
+         query.findObjectsInBackground { (user: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let user = user {
+               
+           // Display User Data
+            }
+         }
+         ```
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
