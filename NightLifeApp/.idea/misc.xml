@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="..\:/Users/18482/git/CS388/CS388Project/NightLifeApp/app/src/main/res/drawable/ic_home.xml" value="0.2695" />
         <entry key="..\:/Users/18482/git/CS388/CS388Project/NightLifeApp/app/src/main/res/drawable/ic_map.xml" value="0.2695" />
         <entry key="..\:/Users/18482/git/CS388/CS388Project/NightLifeApp/app/src/main/res/drawable/ic_profile.xml" value="0.2695" />
@@ -11,6 +12,11 @@
         <entry key="..\:/Users/18482/git/CS388/CS388Project/NightLifeApp/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
         <entry key="..\:/Users/18482/git/CS388/CS388Project/NightLifeApp/app/src/main/res/layout/fragment_home.xml" value="0.3" />
         <entry key="..\:/Users/18482/git/CS388/CS388Project/NightLifeApp/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.365625" />
+=======
+        <entry key="..\:/Users/17323/AndroidStudioProjects/NightLife/CS388Project/NightLifeApp/app/src/main/res/drawable/edit_text_border.xml" value="0.3665" />
+        <entry key="..\:/Users/17323/AndroidStudioProjects/NightLife/CS388Project/NightLifeApp/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/17323/AndroidStudioProjects/NightLife/CS388Project/NightLifeApp/app/src/main/res/layout/activity_report.xml" value="0.4" />
+>>>>>>> bcf74c99c37ab1fe802f95c34061b8e7ace9c6fc
       </map>
     </option>
   </component>

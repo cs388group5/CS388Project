@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnSubmitReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="52dp"
+        android:backgroundTint="#0000FF"
+        android:text="Submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/etLocation"
+        android:layout_width="237dp"
+        android:layout_height="64dp"
+        android:background="@drawable/edit_text_border"
+        android:ellipsize="start"
+        android:gravity="center_horizontal"
+        android:ems="10"
+        android:hint="Location"
+        android:inputType="textPostalAddress"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/etDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.445"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCrimeDescription"
+        app:layout_constraintVertical_bias="0.29" />
+
+    <EditText
+        android:id="@+id/etCrimeDescription"
+        android:layout_width="243dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="144dp"
+        android:ems="10"
+        android:ellipsize="start"
+        android:gravity="center_horizontal"
+        android:hint="Description"
+        android:background="@drawable/edit_text_border"
+        android:textColorHint="#FFFFFF"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/etLocation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.453"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etDate"
+        android:layout_width="234dp"
+        android:layout_height="68dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/edit_text_border"
+        android:ems="10"
+        android:hint="Date"
+        android:ellipsize="start"
+        android:gravity="center_horizontal"
+        android:inputType="date"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/etTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/etTime"
+        android:layout_width="233dp"
+        android:layout_height="66dp"
+        android:layout_marginBottom="72dp"
+        android:ems="10"
+        android:hint="Time"
+        android:ellipsize="start"
+        android:gravity="center_horizontal"
+        android:textColorHint="#FFFFFF"
+        android:background="@drawable/edit_text_border"
+        android:inputType="time"
+        app:layout_constraintBottom_toTopOf="@+id/btnSubmitReport"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="227dp"
+        android:layout_height="72dp"
+        android:text="Crime Type"
+        android:backgroundTint="#0000FF"
+        app:layout_constraintBottom_toTopOf="@+id/etCrimeDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.451"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.664" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
