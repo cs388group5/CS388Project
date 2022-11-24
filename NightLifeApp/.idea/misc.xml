@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jorda/AndroidStudioProjects/CS388Project/NightLifeApp/app/src/main/res/drawable/ic_baseline_remove_red_eye_24.xml" value="0.2125" />
+        <entry key="..\:/Users/jorda/AndroidStudioProjects/CS388Project/NightLifeApp/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Users/jorda/AndroidStudioProjects/CS388Project/NightLifeApp/app/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/jorda/AndroidStudioProjects/CS388Project/NightLifeApp/app/src/main/res/layout/profile.xml" value="0.1" />
+        <entry key="..\:/Users/jorda/AndroidStudioProjects/CS388Project/NightLifeApp/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />
         <entry key="..\:/Users/white/CS388Project/NightLifeApp/app/src/main/res/drawable/ic_report.xml" value="0.1795" />
         <entry key="..\:/Users/white/CS388Project/NightLifeApp/app/src/main/res/drawable/ic_settings.xml" value="0.1795" />
         <entry key="..\:/Users/white/CS388Project/NightLifeApp/app/src/main/res/layout/activity_main.xml" value="0.10416666666666667" />
