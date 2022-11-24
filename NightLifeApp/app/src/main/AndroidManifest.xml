@@ -13,20 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NightLifeApp"
         tools:targetApi="31">
-        <activity
-            android:name=".settings"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".mapMain"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

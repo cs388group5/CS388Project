@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:src="@drawable/ic_phone911"
-        android:backgroundTint="@color/material_dynamic_neutral100"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/flContainer"
         app:layout_constraintEnd_toEndOf="parent" />
 

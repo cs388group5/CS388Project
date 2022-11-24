@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.example.nightlifeapp.fragments.HomeFragment
+import com.example.nightlifeapp.fragments.MapFragment
 import com.example.nightlifeapp.fragments.ProfileFragment
 import com.example.nightlifeapp.fragments.ReportFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Home", Toast.LENGTH_SHORT)
                 }
                 R.id.nav_map -> {
+                    fragmentToShow = MapFragment()
                     Toast.makeText(this, "Map", Toast.LENGTH_SHORT)
                 }
                 R.id.nav_report -> {
