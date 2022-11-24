@@ -235,3 +235,7 @@ There will be functionality for emergency calls to the authorities and close fri
          }
          ```
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
+
+
+[Milestone 1 Gif]
+![Nightlife](https://user-images.githubusercontent.com/98711133/203696925-4242192a-14f6-4795-b78a-532cbfc48e27.gif)
