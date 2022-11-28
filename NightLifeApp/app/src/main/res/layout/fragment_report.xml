@@ -88,7 +88,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btLogout"
         android:layout_width="227dp"
         android:layout_height="72dp"
         android:text="Crime Type"
