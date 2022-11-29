@@ -1,10 +1,11 @@
 package com.example.nightlifeapp
 
-import android.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.example.nightlifeapp.fragments.HomeFragment
 import com.example.nightlifeapp.fragments.MapFragment
 import com.example.nightlifeapp.fragments.ProfileFragment
@@ -13,6 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        val fragmentManager: FragmentManager = supportFragmentManager
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -40,7 +42,9 @@ class MainActivity : AppCompatActivity() {
             }
 
             if (fragmentToShow != null){
+
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragmentToShow).commit()
+
             }
 
             true
