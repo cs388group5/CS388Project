@@ -5,7 +5,7 @@ import com.parse.ParseObject
 import com.parse.ParseUser
 import java.util.*
 
-@ParseClassName("Crime")
+@ParseClassName("crime_report")
 class Crime : ParseObject() {
 
     fun getDescription(): String? {
@@ -30,16 +30,23 @@ class Crime : ParseObject() {
     fun setLocation(location:String){
         put(KEY_LOCATION,location)
     }
-    fun getDate(): Date? {
-        return  getDate(KEY_DATE)
+    fun getDate(): String? {
+        return  getString(KEY_DATE)
 
 
     }
-    fun setDate(date:Date){
+    fun setDate(date:String){
         put(KEY_DATE,date)
     }
 
+    fun getTime(): String? {
+        return  getString(KEY_TIME)
 
+
+    }
+    fun setTime(time:String){
+        put(KEY_TIME,time)
+    }
 
     fun getUser(): ParseUser?{
         return getParseUser(KEY_USER)
@@ -55,6 +62,7 @@ class Crime : ParseObject() {
         const val KEY_CRIME_TYPE = "crime_type"
         const val KEY_LOCATION = "location"
         const val KEY_DATE = "date"
+        const val KEY_TIME = "time"
         const val KEY_USER = "user_id"
 
     }
