@@ -34,25 +34,22 @@ class MainActivity : AppCompatActivity() {
 
             var fragmentToShow: Fragment? = null
             when (item.itemId) {
-                R.id.nav_login -> {
-                    fragmentToShow = LoginFragment()
-                    Toast.makeText(this, "Login", Toast.LENGTH_SHORT)
-                }
+
                 R.id.nav_home -> {
                     fragmentToShow = HomeFragment()
-                    Toast.makeText(this, "Home", Toast.LENGTH_SHORT)
+                    //Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_map -> {
                     fragmentToShow = MapFragment()
-                    Toast.makeText(this, "Map", Toast.LENGTH_SHORT)
+                    //Toast.makeText(this, "Map", Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_report -> {
-                    fragmentToShow = ReportFragment()
-                    Toast.makeText(this, "Report", Toast.LENGTH_SHORT)
+                    fragmentToShow = LoginFragment()
+                    //Toast.makeText(this, "Report", Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_profile -> {
                     fragmentToShow = ProfileFragment()
-                    Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show()
                 }
             }
 

@@ -29,6 +29,11 @@ class LoginFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
+        //check if user is logged in
+        //if so take them to mainactivity
+        if(ParseUser.getCurrentUser()!=null){
+            goToHomePage()
+        }
 
         view.findViewById<Button>(R.id.btnLogin).setOnClickListener {
             val username = view.findViewById<EditText>(R.id.etUsername).text.toString()
