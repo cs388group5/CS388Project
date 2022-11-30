@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
 
     }
     fun callPhone(){
-        val callIntent = Intent(Intent.ACTION_CALL)
+        val callIntent = Intent(Intent.ACTION_DIAL)
         callIntent.data = Uri.parse("tel:" + 911)
         Toast.makeText(this, "Calling 911", Toast.LENGTH_SHORT).show()
         startActivity(callIntent)
