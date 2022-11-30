@@ -10,6 +10,7 @@ class ParseApplication : Application(){
         super.onCreate()
 
         ParseObject.registerSubclass(User::class.java)
+        ParseObject.registerSubclass(Crime::class.java)
 
         Parse.initialize(
             Parse.Configuration.Builder(this)
