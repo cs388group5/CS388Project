@@ -1,22 +1,17 @@
 package com.example.nightlifeapp.fragments
 
-import android.content.Intent
-import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.fragment.app.FragmentManager
-import com.example.nightlifeapp.MainActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.example.nightlifeapp.R
 import com.parse.ParseUser
-import com.example.nightlifeapp.fragments.HomeFragment
 
 
 class LoginFragment : Fragment() {
@@ -33,17 +28,15 @@ class LoginFragment : Fragment() {
 
 
         super.onViewCreated(view, savedInstanceState)
-        if (ParseUser.getCurrentUser() != null){
-            goToHomePage()
-        }
 
-        view.findViewById<Button>(R.id.btnSignup).setOnClickListener {
+
+        view.findViewById<Button>(R.id.btnLogin).setOnClickListener {
             val username = view.findViewById<EditText>(R.id.etUsername).text.toString()
             val password = view.findViewById<EditText>(R.id.etPassword).text.toString()
 
             loginUser(username, password)
         }
-        view.findViewById<Button>(R.id.btnLogin).setOnClickListener {
+        view.findViewById<Button>(R.id.btnSignup).setOnClickListener {
             val username = view.findViewById<EditText>(R.id.etUsername).text.toString()
             val password = view.findViewById<EditText>(R.id.etPassword).text.toString()
 
@@ -85,9 +78,11 @@ class LoginFragment : Fragment() {
     }
 
     private fun goToHomePage(){
-
-            parentFragmentManager.beginTransaction().replace(R.id.flContainer, HomeFragment()).commit()
-
+        val fragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(com.example.nightlifeapp.R.id.flContainer, ReportFragment())
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 
 

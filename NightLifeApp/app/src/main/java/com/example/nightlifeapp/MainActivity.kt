@@ -6,10 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.example.nightlifeapp.fragments.HomeFragment
-import com.example.nightlifeapp.fragments.MapFragment
-import com.example.nightlifeapp.fragments.ProfileFragment
-import com.example.nightlifeapp.fragments.ReportFragment
+import com.example.nightlifeapp.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +20,10 @@ class MainActivity : AppCompatActivity() {
 
             var fragmentToShow: Fragment? = null
             when (item.itemId) {
+                R.id.nav_login -> {
+                    fragmentToShow = LoginFragment()
+                    Toast.makeText(this, "Login", Toast.LENGTH_SHORT)
+                }
                 R.id.nav_home -> {
                     fragmentToShow = HomeFragment()
                     Toast.makeText(this, "Home", Toast.LENGTH_SHORT)
