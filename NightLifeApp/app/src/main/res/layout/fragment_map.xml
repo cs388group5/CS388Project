@@ -17,7 +17,7 @@
         app:srcCompat="@drawable/screen_shot_2022_11_23_at_10_45_55_pm" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCrimes"
+         android:id="@+id/rvCrimes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,5 +51,11 @@
         android:drawableLeft="@drawable/ic_search"
         app:layout_constraintStart_toEndOf="@+id/btFilter"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <fragment
+        class="com.google.android.gms.maps.MapFragment"
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
