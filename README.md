@@ -27,12 +27,11 @@ There will be functionality for emergency calls to the authorities and close fri
 
 **Required Must-have Stories**
 
-* [User can view crime information in a list view.]
-* [User can view crime information on a map of there current or searched location.]
-* [User can report a crime with a location, description, and time.]
-* [User can upload a picture/video with crime information]
-* [User can emergency call the authorites.]
-* User can register a new account and login with that account.
+[o] [User can view crime information in a list view.]
+[o] [User can view crime information on a map of there current or searched location.]
+[*] [User can report a crime with a location, description, and time.]
+[*] [User can emergency call the authorites.]
+[*] User can register a new account and login with that account.
 
 **Optional Nice-to-have Stories**
 
@@ -44,24 +43,23 @@ There will be functionality for emergency calls to the authorities and close fri
 ### 2. Screen Archetypes
 
 * Login/Register
-   * User should be able to login to their account.
-   * User should be able to register a new account.
+   [*] User should be able to login to their account.
+   [*] User should be able to register a new account.
    
 * Profile
    * User should be able to edit their profile.
    * User should be able to see emergency contacts.
-   * User should see their name and email address.
+   [*] User should see their name and email address.
  
 * Report
-   * User can upload an image of the crime.
-   * User can give a decription of the crime.
-   * User can give the location of the crime.
-   * User can give the time the crime occurred. 
-   * User can give the crime type.
-   * User should be able to submit the response.
+   [*] User can give a decription of the crime.
+   [*] User can give the location of the crime.
+   [*] User can give the time the crime occurred. 
+   [*] User can give the crime type.
+   [*] User should be able to submit the response.
    
 * Map
-   * Screen should show the map within a predetermined radius of the user's current location.
+   [*] Screen should show the map within a predetermined radius of the user's current location.
    * User should be able to filter the map by location.
    * User can search a location and be directed to that location on the map.
    
@@ -77,14 +75,14 @@ There will be functionality for emergency calls to the authorities and close fri
 **Tab Navigation** (Tab to Screen)
 
 * To view the map:
-    * On the bottom view bar, click on map tab -> map page 
+    [*] On the bottom view bar, click on map tab -> map page 
 * To report an incident:
-    * On the bottom bar, click on Report icon -> Report screen.
+    [*] On the bottom bar, click on Report icon -> Report screen.
     
 * To open profile page:
-    * On the bottom bar, click Profile tab -> Profile page
+    [*] On the bottom bar, click Profile tab -> Profile page
 * To view incidents:
-    * On the bottom bar, click Home tab -> Home page
+    [*] On the bottom bar, click Home tab -> Home page
 
 **Flow Navigation** (Screen to Screen)
 
@@ -239,3 +237,7 @@ There will be functionality for emergency calls to the authorities and close fri
 
 [Milestone 1 Gif]
 ![Nightlife](https://user-images.githubusercontent.com/98711133/203696925-4242192a-14f6-4795-b78a-532cbfc48e27.gif)
+
+
+[Milestone 2 Gif]
+![Nightlife2](https://user-images.githubusercontent.com/98711133/204967956-4b3c5990-0e1d-4c6c-b24c-ee5e8e2c3749.gif)
