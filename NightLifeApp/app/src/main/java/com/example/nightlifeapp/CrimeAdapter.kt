@@ -29,8 +29,6 @@ class CrimeAdapter(private val context: Context,private val crimes:List<Crime>):
             description.text = crime.getDescription()
             date.text = crime.getDate().toString()
             location.text = crime.getLocation()
-
-
         }
 
     }
