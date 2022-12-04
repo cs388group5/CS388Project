@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
+import androidx.core.view.contains
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +18,7 @@ import com.example.nightlifeapp.R
 import com.parse.FindCallback
 import com.parse.ParseException
 import com.parse.ParseQuery
+import com.parse.ParseUser
 
 
 class HomeFragment : Fragment() {
@@ -25,6 +28,10 @@ class HomeFragment : Fragment() {
     lateinit var adapter:CrimeAdapter
 
     lateinit var swipeContainer: SwipeRefreshLayout
+
+    lateinit var btnSubmit: Button
+    var str: String = "all"
+
 
     var allCrimes: MutableList<Crime> = mutableListOf()
 
@@ -40,9 +47,10 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         swipeContainer = view.findViewById(R.id.swipeContainer)
+        btnSubmit = view.findViewById(R.id.searchCrimeBtn)
         swipeContainer.setOnRefreshListener {
             allCrimes.clear()
-            queryPosts()
+            queryPosts("all")
             swipeContainer.isRefreshing = false
         }
 
@@ -52,13 +60,20 @@ class HomeFragment : Fragment() {
         rvCrimes.adapter=adapter
 
         rvCrimes.layoutManager= LinearLayoutManager(requireContext())
+        queryPosts("all")
 
-        queryPosts()
+        btnSubmit.setOnClickListener {
+
+           str= view.findViewById<EditText>(R.id.etCrimeType).text.toString()
+            Log.d("TAG",str)
+            queryPosts(str)
+
+        }
 
     }
 
     //Query for all posts in server
-    open fun queryPosts() {
+    open fun queryPosts(crimeType: String) {
 
         //specify which class to query
         val query: ParseQuery<Crime> = ParseQuery.getQuery(Crime::class.java)
@@ -76,9 +91,21 @@ class HomeFragment : Fragment() {
                         for(post in posts){
                             Log.i(TAG,"Post: "+post.getDescription() + ", username: "+post.getUser()?.username)
                         }
-
-                        allCrimes.addAll(posts)
+                        if(str=="all") {
+                            Log.d("TAG","it is all")
+                            allCrimes.addAll(posts)
+                        }
+                        else{
+                            Log.d("TAG","it is not all")
+                            allCrimes.clear()
+                            for(post in posts){
+                                if(post.getCrimeType()==str || post.getLocation()==str|| post.getDate()==str){
+                                    allCrimes.add(post)
+                                }
+                            }
+                        }
                         adapter.notifyDataSetChanged()
+                        str = "all";
                     }
                 }
             }
