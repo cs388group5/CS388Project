@@ -6,7 +6,7 @@ import com.parse.ParseObject
 // Contact name
 // Contact phone number
 
-@ParseClassName("EmergencyContact")
+@ParseClassName("emergency_contacts")
 class EmergencyContact: ParseObject() {
     fun setFirstName(name: String){
         put(KEY_FIRST_NAME,name)
@@ -21,9 +21,8 @@ class EmergencyContact: ParseObject() {
         put(KEY_PHONE_NUMBER,name)
     }
 
-    // Returns first name and last name delimited by '_' sign
     fun getName(): String?{
-        return getString(KEY_FIRST_NAME) + '_'+ getString(KEY_FIRST_NAME)
+        return getString(KEY_FIRST_NAME) + ' '+ getString(KEY_LAST_NAME)
     }
 
     fun getRelationship(): String?{
@@ -31,7 +30,7 @@ class EmergencyContact: ParseObject() {
     }
 
     fun getPhoneNumber(): String? {
-        return getString(KEY_RELATIONSHIP)
+        return getString(KEY_PHONE_NUMBER)
     }
 
     companion object {
