@@ -11,6 +11,7 @@ class ParseApplication : Application(){
 
         ParseObject.registerSubclass(User::class.java)
         ParseObject.registerSubclass(Crime::class.java)
+        ParseObject.registerSubclass(EmergencyContact::class.java)
 
         Parse.initialize(
             Parse.Configuration.Builder(this)
