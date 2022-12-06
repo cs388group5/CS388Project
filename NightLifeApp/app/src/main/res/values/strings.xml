@@ -7,10 +7,6 @@
 
     <string name="back4app_client_key">zk07pIaz5XmjOL3f8FgSIXJt5fv9ax3AexmsVXZP</string>
 
-<<<<<<< HEAD
-=======
-    <string name="google_maps_api_key">AIzaSyAE0smDRI3pO5jS5Ula_H2geBWvhP_PP6E</string>
-
     <string name="formTitle">Add Contact</string>
->>>>>>> 5535cb26d28a9e1f2f8af6dc99c4ca7af4ac7a38
+
 </resources>
