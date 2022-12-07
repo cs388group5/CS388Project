@@ -49,7 +49,7 @@ class ReportFragment : Fragment() {
         tvTime = view.findViewById(R.id.tvTime)
         tvDate = view.findViewById(R.id.tvDate)
 
-        etCrimeType = view.findViewById(R.id.etType)
+        etCrimeType = view.findViewById(R.id.btnLogout)
         etDescription = view.findViewById(R.id.etCrimeDescription)
         etLocation = view.findViewById(R.id.etLocation)
 
@@ -116,7 +116,7 @@ class ReportFragment : Fragment() {
 
         btnSubmit.setOnClickListener {
 
-            val crimeType = view.findViewById<EditText>(R.id.etType).text.toString()
+            val crimeType = view.findViewById<EditText>(R.id.btnLogout).text.toString()
             val description = view.findViewById<EditText>(R.id.etCrimeDescription).text.toString()
             val location = view.findViewById<EditText>(R.id.etLocation).text.toString()
             val date = view.findViewById<TextView>(R.id.tvDate).text.toString()
