@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.nightlifeapp.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.parse.ParseUser
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,16 +27,32 @@ class MainActivity : AppCompatActivity() {
         return true;
     }
     fun onSettingsAction(mi: MenuItem) {
+        val parseUser = ParseUser.getCurrentUser()
         val fragmentManager = supportFragmentManager
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(com.example.nightlifeapp.R.id.flContainer, SettingsFragment())
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()
+        if (parseUser == null){
+            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(
+                com.example.nightlifeapp.R.id.flContainer,
+                LoginFragment()
+            )
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+
+        }else {
+            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(
+                com.example.nightlifeapp.R.id.flContainer,
+                SettingsFragment()
+            )
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         val fragmentManager: FragmentManager = supportFragmentManager
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val parseUser = ParseUser.getCurrentUser()
 
         val fab: View = findViewById(R.id.fabEmergency)
         fab.setOnClickListener { view ->
@@ -59,12 +76,21 @@ class MainActivity : AppCompatActivity() {
                     //Toast.makeText(this, "Map", Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_report -> {
-                    fragmentToShow = LoginFragment()
-                    //Toast.makeText(this, "Report", Toast.LENGTH_SHORT).show()
+                    if (parseUser == null){
+                        fragmentToShow = LoginFragment()
+                    }else {
+                        fragmentToShow = ReportFragment()
+                        //Toast.makeText(this, "Report", Toast.LENGTH_SHORT).show()
+                    }
                 }
                 R.id.nav_profile -> {
-                    fragmentToShow = ProfileFragment()
-                    //Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show()
+                    if (parseUser == null){
+                        fragmentToShow = LoginFragment()
+
+                    }else {
+                        fragmentToShow = ProfileFragment()
+                        //Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
 
@@ -121,5 +147,12 @@ class MainActivity : AppCompatActivity() {
             }
             return
         }
+    }
+    private fun goToLogin(){
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(com.example.nightlifeapp.R.id.flContainer, LoginFragment())
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 }

@@ -28,6 +28,7 @@ class SettingsFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
+
         view.findViewById<Button>(R.id.btnLogout).setOnClickListener {
            ParseUser.logOut()
         }
