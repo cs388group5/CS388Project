@@ -27,48 +27,50 @@ There will be functionality for emergency calls to the authorities and close fri
 
 **Required Must-have Stories**
 
-- [ ] [User can view crime information in a list view.]
+- [x] [User can view crime information in a list view.]
 - [ ] [User can view crime information on a map of there current or searched location.]
 - [x] [User can report a crime with a location, description, and time.]
 - [x] [User can emergency call the authorites.]
 - [x] User can register a new account and login with that account.
+- [x] User can edit their information in profile page.
 
 **Optional Nice-to-have Stories**
 
-* [User can view locations of emergency contacts]
-* [User can sort crime information by type on list view and map view.]
-* [Map areas with heavy activity show as one big icon with a list of activity upon clicking.]
-* [Crime types are shown as different icons on the map.]
+- [ ] [User can view locations of emergency contacts]
+- [ ] [User can sort crime information by type on list view and map view.]
+- [ ] [Map areas with heavy activity show as one big icon with a list of activity upon clicking.]
+- [ ] [Crime types are shown as different icons on the map.]
+- [ ] [Crimes approved by PD shall show verified icon on list view.]
 
 ### 2. Screen Archetypes
 
 * Login/Register
- - [x] User should be able to login to their account.
- - [x] User should be able to register a new account.
+ - User should be able to login to their account.
+ - User should be able to register a new account.
    
 * Profile
-   * User should be able to edit their profile.
-   * User should be able to see emergency contacts.
-  - [x] User should see their name and email address.
+  - User should be able to edit their profile.
+  - User should be able to see emergency contacts.
+  - User should see their name and email address.
  
 * Report
- - [x] User can give a decription of the crime.
- - [x] User can give the location of the crime.
- - [x] User can give the time the crime occurred. 
- - [x] User can give the crime type.
- - [x] User should be able to submit the response.
+ - User can give a decription of the crime.
+ - User can give the location of the crime.
+ - User can give the time the crime occurred. 
+ - User can give the crime type.
+ - User should be able to submit the response.
    
 * Map
-   - [x] Screen should show the map within a predetermined radius of the user's current location.
-   * User should be able to filter the map by location.
-   * User can search a location and be directed to that location on the map.
+   - Screen should show the map within a predetermined radius of the user's current location.
+   - User should be able to filter the map by location.
+   - User can search a location and be directed to that location on the map.
    
 * Home
-   * Home page should show the location, time and description of all recent crimes.
-   * User should be able to infinitely scroll down to see all crimes.
+   - Home page should show the location, time and description of all recent crimes.
+   - User should be able to infinitely scroll down to see all crimes.
   
 * Settings
-   * User should be able to change settings for things like  location or in-app settings like light/dark mode.
+   - User should be able to change settings for things like  location or in-app settings like light/dark mode.
 
 ### 3. Navigation
 

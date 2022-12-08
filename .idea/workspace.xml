@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3dee8bc0-dd92-454b-b5c2-48d27a69879c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/NightLifeApp/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/NightLifeApp/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NightLifeApp/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/NightLifeApp/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NightLifeApp/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/NightLifeApp/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NightLifeApp/app/src/main/res/layout/fragment_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/NightLifeApp/app/src/main/res/layout/fragment_profile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NightLifeApp/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/NightLifeApp/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NightLifeApp/app/src/main/java/com/example/nightlifeapp/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/NightLifeApp/app/src/main/java/com/example/nightlifeapp/User.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NightLifeApp/app/src/main/java/com/example/nightlifeapp/fragments/ProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/NightLifeApp/app/src/main/java/com/example/nightlifeapp/fragments/ProfileFragment.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +27,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/NightLifeApp" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
