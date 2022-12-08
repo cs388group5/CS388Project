@@ -45,32 +45,32 @@ There will be functionality for emergency calls to the authorities and close fri
 ### 2. Screen Archetypes
 
 * Login/Register
- - User should be able to login to their account.
- - User should be able to register a new account.
+    - User should be able to login to their account.
+    - User should be able to register a new account.
    
 * Profile
-  - User should be able to edit their profile.
-  - User should be able to see emergency contacts.
-  - User should see their name and email address.
+    - User should be able to edit their profile.
+    - User should be able to see emergency contacts.
+    - User should see their name and email address.
  
 * Report
- - User can give a decription of the crime.
- - User can give the location of the crime.
- - User can give the time the crime occurred. 
- - User can give the crime type.
- - User should be able to submit the response.
+    - User can give a decription of the crime.
+    - User can give the location of the crime.
+    - User can give the time the crime occurred. 
+    - User can give the crime type.
+    - User should be able to submit the response.
    
 * Map
-   - Screen should show the map within a predetermined radius of the user's current location.
-   - User should be able to filter the map by location.
-   - User can search a location and be directed to that location on the map.
+    - Screen should show the map within a predetermined radius of the user's current location.
+    - User should be able to filter the map by location.
+    - User can search a location and be directed to that location on the map.
    
 * Home
-   - Home page should show the location, time and description of all recent crimes.
-   - User should be able to infinitely scroll down to see all crimes.
+    - Home page should show the location, time and description of all recent crimes.
+    - User should be able to infinitely scroll down to see all crimes.
   
 * Settings
-   - User should be able to change settings for things like  location or in-app settings like light/dark mode.
+    - User should be able to change settings for things like  location or in-app settings like light/dark mode.
 
 ### 3. Navigation
 
