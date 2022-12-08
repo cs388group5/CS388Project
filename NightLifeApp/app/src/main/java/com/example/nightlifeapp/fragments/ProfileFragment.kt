@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -41,6 +42,7 @@ class ProfileFragment : Fragment(), FormDialogFragment.FormDialogListener{
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
         btEdit = view.findViewById(R.id.btEditProfile)
         tvName = view.findViewById(R.id.tvName)
@@ -128,5 +130,6 @@ class ProfileFragment : Fragment(), FormDialogFragment.FormDialogListener{
 
         })
     }
+
 
 }
