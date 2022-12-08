@@ -243,3 +243,6 @@ There will be functionality for emergency calls to the authorities and close fri
 
 [Milestone 2 Gif]
 ![Nightlife2](https://user-images.githubusercontent.com/98711133/204967956-4b3c5990-0e1d-4c6c-b24c-ee5e8e2c3749.gif)
+
+[Milestone 3 Gif]
+![Nightlife3](https://user-images.githubusercontent.com/98711133/206345285-577c839e-10cb-4565-9405-4973d944dd08.gif)
