@@ -28,11 +28,6 @@ class MapFragment : Fragment() {
 
     var allCrimes: MutableList<Crime> = mutableListOf()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,7 +43,7 @@ class MapFragment : Fragment() {
             mMap.clear() //clear old markers
 
             val googlePlex = CameraPosition.builder()
-                .target(LatLng(37.4219999, -122.0862462))
+                .target(LatLng(40.7219999, -74.1762462))
                 .zoom(10f)
                 .bearing(0f)
                 .tilt(45f)
@@ -56,6 +51,14 @@ class MapFragment : Fragment() {
 
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(googlePlex), 10000, null)
 
+            createNewMarker(40.7,-74.17,mMap,"Assault", "I was assaulted outside of the WEC")
+
+            /*
+            Not working yet
+            Log.i(TAG,"Entering loadMapMarkers")
+            loadMapMarkers(mMap)
+            Log.i(TAG,"Exited loadMapMarkers")
+             */
         }
 
         return rootView
@@ -79,6 +82,7 @@ class MapFragment : Fragment() {
                 .snippet(description)
         )
     }
+
     //without description
     private fun createNewMarker(latitude: Double,longitude: Double, mMap: GoogleMap, title: String){
         mMap.addMarker(
@@ -99,16 +103,33 @@ class MapFragment : Fragment() {
                 return null
             }
             val location: Address = address[0]
+            Log.i(TAG,"getLocationFromAddress " + location)
             latLngLocation = LatLng(location.getLatitude(), location.getLongitude())
         } catch (ex: IOException) {
             ex.printStackTrace()
+            Log.e(TAG,"IO Exception")
         }
         return latLngLocation
     }
 
-    private fun loadMapMarkers(){
+    private fun loadMapMarkers(mMap: GoogleMap){
 
+        var location:LatLng?
         queryCrimes()
+        Log.i(TAG,"Finished querying crimes")
+        for(crime in allCrimes){
+            location=getLocationFromAddress(this.context,crime.getLocation())
+            if(location!=null){
+                Log.i(TAG,"Location: "+location.latitude+" "+location.longitude)
+                createNewMarker(location.latitude,location.longitude,mMap,
+                    crime.getCrimeType()!!, crime.getDescription()!!
+                )
+            }
+            else{
+                Log.i(TAG,"The location was null")
+            }
+        }
+
     }
 
     private fun queryCrimes(){
@@ -118,22 +139,13 @@ class MapFragment : Fragment() {
 
         query.addDescendingOrder("createdAt")
         query.setLimit(20)
-        query.findInBackground(object : FindCallback<Crime> {
-            override fun done(posts: MutableList<Crime>?, e: ParseException?) {
-                if(e!=null){
-                    Log.e(TAG,"Error fetching posts")
-                }else {
-                    if(posts!=null){
-                        for(post in posts){
-                            Log.i(TAG,"Post: "+post.getDescription() + ", username: "+post.getUser()?.username)
-                        }
-
-                        allCrimes.addAll(posts)
-                    }
-                }
-            }
-
-        })
+        try {
+            val list = query.find()
+            Log.i(TAG, "List: $list")
+            allCrimes.addAll(list)
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        }
     }
 
     companion object{
