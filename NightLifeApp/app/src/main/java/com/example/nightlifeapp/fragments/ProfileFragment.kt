@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -27,10 +28,10 @@ class ProfileFragment : Fragment(), FormDialogFragment.FormDialogListener{
     lateinit var adapter: EmergencyContactAdapter
     lateinit var addButton: Button
     lateinit var btEdit: Button
-    lateinit var tvName: EditText
-    lateinit var tvEmail: EditText
+    lateinit var tvName: TextView
+    lateinit var tvEmail: TextView
     lateinit var ivProfile: ImageView
-
+    lateinit var userInfo: MutableList<ParseUser>
     var contacts: MutableList<EmergencyContact> = mutableListOf()
 
     override fun onCreateView(
@@ -44,6 +45,7 @@ class ProfileFragment : Fragment(), FormDialogFragment.FormDialogListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
+        userInfo = queryUser(ParseUser.getCurrentUser())
         btEdit = view.findViewById(R.id.btEditProfile)
         tvName = view.findViewById(R.id.tvName)
         tvEmail = view.findViewById(R.id.tvEmail)
@@ -54,15 +56,21 @@ class ProfileFragment : Fragment(), FormDialogFragment.FormDialogListener{
         contactsRv.layoutManager = LinearLayoutManager(requireContext())
         addButton = view.findViewById(R.id.btAdd)
 
-        if (ParseUser.getCurrentUser() != null){
+        val userH : User = userInfo.get(0) as User
 
-        }
+        tvName.text = String.format("%s %s",userH.getFirstName(), userH.getLastName())
+        tvEmail.text = userH.email
+
         addButton.setOnClickListener {
             val dialog = FormDialogFragment()
             dialog.setTargetFragment(this, 1)
             dialog.show(parentFragmentManager,"MyCustomDialog")
         }
 
+        // Inflating profile fragment layout on edit button click
+        btEdit.setOnClickListener {
+            goToEditProfile()
+        }
         queryContact(ParseUser.getCurrentUser())
     }
 
@@ -94,10 +102,12 @@ class ProfileFragment : Fragment(), FormDialogFragment.FormDialogListener{
             if(exception != null){
                 exception.printStackTrace()
                 Log.e("Error","Error while saving Contact")
+                Log.e("Error","$exception")
                 Toast.makeText(requireContext(), "Error saving the post", Toast.LENGTH_SHORT).show()
             } else {
                 Log.i("Success","Contact saved successfully")
                 Toast.makeText(requireContext(), "Successfully saved post", Toast.LENGTH_SHORT).show()
+                adapter.notifyDataSetChanged()
             }
         }
 
@@ -131,5 +141,23 @@ class ProfileFragment : Fragment(), FormDialogFragment.FormDialogListener{
         })
     }
 
+    fun queryUser(user: ParseUser): MutableList<ParseUser> {
+        //specify which class to query
+        val query= ParseUser.getQuery()
+
+        //find User
+        query.whereEqualTo("username",user.username)
+        query.addDescendingOrder("createdAt")
+        query.setLimit(20)
+        return query.find()
+    }
+
+    private fun goToEditProfile(){
+        val fragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(com.example.nightlifeapp.R.id.flContainer, EditProfileFragment())
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+    }
 
 }

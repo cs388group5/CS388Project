@@ -31,6 +31,7 @@ class SettingsFragment : Fragment() {
 
         view.findViewById<Button>(R.id.btnLogout).setOnClickListener {
            ParseUser.logOut()
+            parentFragmentManager.beginTransaction().replace(R.id.flContainer,HomeFragment()).commit()
         }
     }
 
