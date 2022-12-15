@@ -64,6 +64,7 @@ class Crime : ParseObject() {
         const val KEY_DATE = "date"
         const val KEY_TIME = "time"
         const val KEY_USER = "user_id"
+        const val KEY_CITY = "city"
 
     }
 

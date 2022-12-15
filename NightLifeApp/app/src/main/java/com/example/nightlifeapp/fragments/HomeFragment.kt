@@ -79,7 +79,14 @@ class HomeFragment : Fragment() {
         val query: ParseQuery<Crime> = ParseQuery.getQuery(Crime::class.java)
 
         //find all post objects
-        query.include(Crime.KEY_USER)
+        if (crimeType.equals("all")){
+            query.include(Crime.KEY_USER)
+        } else {
+//            var value = crimeType.lowercase()
+//            Log.i(TAG, value)
+//            query.whereContains(Crime.KEY_CITY, value)
+            query.whereMatches(Crime.KEY_CITY,crimeType,"i")
+        }
         query.addDescendingOrder("createdAt")
         query.setLimit(20)
         query.findInBackground(object : FindCallback<Crime> {
@@ -89,7 +96,7 @@ class HomeFragment : Fragment() {
                 }else {
                     if(posts!=null){
                         for(post in posts){
-                            Log.i(TAG,"Post: "+post.getDescription() + ", username: "+post.getUser()?.username)
+                            Log.i(TAG,"Post: "+post.getDescription() )
                         }
                         if(str=="all") {
                             Log.d("TAG","it is all")
@@ -98,11 +105,8 @@ class HomeFragment : Fragment() {
                         else{
                             Log.d("TAG","it is not all")
                             allCrimes.clear()
-                            for(post in posts){
-                                if(post.getCrimeType()==str || post.getLocation()==str|| post.getDate()==str){
-                                    allCrimes.add(post)
-                                }
-                            }
+
+                            allCrimes.addAll(posts)
                         }
                         adapter.notifyDataSetChanged()
                         str = "all";
