@@ -13,23 +13,32 @@
         android:background="@drawable/item_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="20dp"
         app:layout_constraintStart_toEndOf="@+id/btnSignup"
         app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
 
     <EditText
         android:id="@+id/etUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="161dp"
+        android:layout_height="27dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/edit_text_border"
         android:hint="Username"
+        android:textColor="@color/white"
+        android:textColorHint="#F8F5F5"
         app:layout_constraintBottom_toTopOf="@+id/etPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/etPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.EditText"
+        android:layout_width="160dp"
+        android:layout_height="28dp"
+        android:background="@drawable/edit_text_border"
         android:hint="Password"
+        android:textColor="@color/white"
+        android:textColorHint="#EFE7E7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
