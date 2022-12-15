@@ -12,9 +12,10 @@
         android:id="@+id/tvProfilePic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile Picture"
+        android:layout_alignStart="@+id/ivAvatar"
         android:layout_marginBottom="5sp"
-        android:layout_alignStart="@+id/ivAvatar" />
+        android:text="Profile Picture"
+        android:textColor="#EFECEC" />
 
     <ImageView
         android:id="@+id/ivAvatar"
@@ -32,12 +33,14 @@
         android:layout_alignEnd="@id/ivAvatar"
 
         android:text="Add Photo" />
+
     <TextView
         android:id="@+id/tvFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5sp"
         android:text="First Name"
-        android:layout_marginBottom="5sp"/>
+        android:textColor="#F1EEEE" />
 
     <EditText
         android:id="@+id/etFirstName"
@@ -48,7 +51,8 @@
         android:ems="10"
         android:hint="First Name"
         android:inputType="textPersonName"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textColor="#F1F0F0" />
 
     <TextView
         android:id="@+id/tvLastName"
@@ -56,7 +60,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/etFirstName"
         android:layout_marginBottom="5sp"
-        android:text="Last Name" />
+        android:text="Last Name"
+        android:textColor="#F1EFEF" />
 
     <EditText
         android:id="@+id/etLastName"
@@ -67,7 +72,8 @@
         android:ems="10"
         android:hint="Last Name"
         android:inputType="textPersonName"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textColor="#EAE6E6" />
 
     <TextView
         android:id="@+id/tvEmail"
@@ -75,7 +81,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/etLastName"
         android:layout_marginBottom="5sp"
-        android:text="Email Address" />
+        android:text="Email Address"
+        android:textColor="#F6F4F4" />
 
     <EditText
         android:id="@+id/etEmail"
@@ -85,7 +92,8 @@
         android:ems="10"
         android:hint="Email Address"
         android:inputType="textPersonName"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textColor="#F3F0F0" />
 
     <Button
         android:id="@+id/btSubmit"
