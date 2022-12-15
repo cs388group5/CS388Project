@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.nightlifeapp.Crime
@@ -27,12 +28,70 @@ class MapFragment : Fragment() {
 
     var allCrimes: MutableList<Crime> = mutableListOf()
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        var name =""
+        var type=""
+        var time=""
+
+        // Find the "Filter" button and set an onClickListener on it
+        val btFilter = view.findViewById<Button>(R.id.btFilter)
+        btFilter.setOnClickListener {
+            // Open the filter dialog or activity
+            val filterDialog = FilterDialog()
+            filterDialog.show(childFragmentManager, "FilterDialog")
+            name= filterDialog.name.toString()
+            type=filterDialog.type.toString()
+            time=filterDialog.type.toString()
+        }
+
+        // Find the "Search" button and set an onClickListener on it
+        val btSearch = view.findViewById<Button>(R.id.btSearch)
+        btSearch.setOnClickListener {
+            // Get the filter criteria from the FilterDialog
+
+            // Use the filter criteria to make a query to the Parse app
+            val query = ParseQuery.getQuery(Crime::class.java)
+            if (!name.isNullOrEmpty()) {
+                query.whereEqualTo("name", name)
+            }
+            if (!type.isNullOrEmpty()) {
+                query.whereEqualTo("type", type)
+            }
+            if (time != null) {
+                query.whereGreaterThanOrEqualTo("createdAt", time)
+            }
+            try {
+                allCrimes = query.find()
+            } catch (e: ParseException) {
+                Log.e("MAP FRAGMENT", "Failed to get crimes from Parse", e)
+            }
+
+            /*
+            // Update the map with the crimes returned by the query
+            val mapFragment =
+                childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+            mapFragment.getMapAsync { mMap ->
+                mMap.clear()
+                for (crime in allCrimes) {
+                    val lat = crime.latitude
+                    val lng = crime.longitude
+                    val title = crime.name
+                    val description = crime.description
+                    createNewMarker(lat, lng, mMap, title, description)
+                }
+            }*/
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_map, container, false)
+
 
         val mapFragment =
             childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?  //use SuppoprtMapFragment for using in fragment instead of activity  MapFragment = activity   SupportMapFragment = fragment
