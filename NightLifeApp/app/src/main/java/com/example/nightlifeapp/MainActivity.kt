@@ -43,7 +43,6 @@ class MainActivity : AppCompatActivity() {
         val fragmentManager: FragmentManager = supportFragmentManager
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val parseUser = ParseUser.getCurrentUser()
 
         val fab: View = findViewById(R.id.fabEmergency)
         fab.setOnClickListener { view ->
@@ -54,6 +53,7 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener {
             item ->
+            val parseUser = ParseUser.getCurrentUser()
 
             var fragmentToShow: Fragment? = null
             when (item.itemId) {

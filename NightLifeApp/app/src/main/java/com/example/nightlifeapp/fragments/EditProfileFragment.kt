@@ -19,7 +19,10 @@ import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.example.nightlifeapp.R
 import com.example.nightlifeapp.User
+import com.parse.ParseException
+import com.parse.ParseFile
 import com.parse.ParseUser
+import com.parse.SaveCallback
 import java.io.File
 import java.io.IOException
 
@@ -65,7 +68,9 @@ class EditProfileFragment : Fragment() {
         etFirstName.setText(userH.getFirstName())
         etLastName.setText(userH.getLastName())
         etEmail.setText(userH.email)
-
+        btAddPhoto.setOnClickListener {
+            onLaunchCamera()
+        }
         btSubmit.setOnClickListener {
             if (etFirstName.text.toString().isEmpty()){
                 error = true
@@ -76,12 +81,14 @@ class EditProfileFragment : Fragment() {
             if (etEmail.text.toString().isEmpty()){
                 error = true
             }
+            if (photoFile == null){
+                error = true
+            }
             if (!error){
                 map["firstname"] = etFirstName.text.toString()
                 map["lastname"] = etLastName.text.toString()
                 map["email"] = etEmail.text.toString()
-                updateInfo(map)
-                parentFragmentManager.beginTransaction().replace(R.id.flContainer, ProfileFragment()).commit()
+                updateInfo(map, photoFile)
 
             } else {
                 Toast.makeText(requireContext(),"One of the input entries is missing", Toast.LENGTH_SHORT);
@@ -98,7 +105,7 @@ class EditProfileFragment : Fragment() {
     }
 
     // A map of parameters
-    fun updateInfo(map: MutableMap<String, String>) {
+    fun updateInfo(map: MutableMap<String, String>, photo: File?) {
 
         val contact : User= ParseUser.getCurrentUser() as User
 
@@ -106,7 +113,7 @@ class EditProfileFragment : Fragment() {
         map["firstname"]?.let { contact.setFirstName(it) }
         map["lastname"]?.let { contact.setLastName(it) }
         map["email"]?.let { contact.email = it }
-
+        contact.setProfilePicture(ParseFile(photo))
         contact.saveInBackground{
                 exception ->
                 if(exception != null){
@@ -116,8 +123,10 @@ class EditProfileFragment : Fragment() {
 //                    Toast.makeText(requireContext(), "Error saving the information", Toast.LENGTH_SHORT).show()
                 } else {
                     Log.i(TAG,"Contact saved successfully")
-//                    Toast.makeText(requireContext(), "Successfully saved profile information", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Successfully saved profile information", Toast.LENGTH_SHORT).show()
+                    parentFragmentManager.beginTransaction().replace(R.id.flContainer, ProfileFragment()).commit()
                 }
+
         }
     }
 

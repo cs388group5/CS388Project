@@ -3,12 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/contact_border"
+    android:layout_margin="5sp"
+    android:padding="5sp"
+    >
 
     <TextView
         android:id="@+id/tvIncident"
-        android:layout_width="80dp"
-        android:layout_height="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Incident"
@@ -17,8 +21,8 @@
 
     <TextView
         android:id="@+id/tvLocation"
-        android:layout_width="80dp"
-        android:layout_height="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:text="Location"
@@ -27,8 +31,8 @@
 
     <TextView
         android:id="@+id/tvDateTime"
-        android:layout_width="95dp"
-        android:layout_height="27dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:layout_marginTop="16dp"
         android:text="DateTime"
@@ -37,10 +41,12 @@
 
     <TextView
         android:id="@+id/tvDescription"
-        android:layout_width="249dp"
-        android:layout_height="46dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="5sp"
         android:text="This is the description of the crime"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.401"
         app:layout_constraintStart_toStartOf="parent"

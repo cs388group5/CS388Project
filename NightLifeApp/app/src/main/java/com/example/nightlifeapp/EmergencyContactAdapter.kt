@@ -1,6 +1,9 @@
 package com.example.nightlifeapp
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +12,8 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import java.text.ParseException
 
 class EmergencyContactAdapter(private val context: Context, private val contacts: ArrayList<EmergencyContact>):
     RecyclerView.Adapter<EmergencyContactAdapter.ViewHolder>() {
@@ -20,11 +23,12 @@ class EmergencyContactAdapter(private val context: Context, private val contacts
         val tvRP = itemView.findViewById<TextView>(R.id.tvRelationship)
         val tvPhoneNumber = itemView.findViewById<TextView>(R.id.tvPhoneNumber)
         val btDelete = itemView.findViewById<Button>(R.id.deleteContactBtn)
+        val btCall = itemView.findViewById<ImageButton>(R.id.btCall)
 
         init {
             itemView.setOnClickListener(this)
             btDelete.setOnClickListener(this)
-
+            btCall.setOnClickListener(this)
         }
         fun bind(contact: EmergencyContact){
             tvContactName.text = contact.getName()
@@ -38,6 +42,9 @@ class EmergencyContactAdapter(private val context: Context, private val contacts
             if (p0 != null) {
                 if (p0.equals(btDelete)){
                     removeAt(adapterPosition)
+                }
+                if (p0.equals(btCall)){
+                    callPhone(contact.getPhoneNumber().toString())
                 }
             }
         }
@@ -77,5 +84,10 @@ class EmergencyContactAdapter(private val context: Context, private val contacts
             }
         }
     }
-
+    fun callPhone(number: String){
+        val callIntent = Intent(Intent.ACTION_DIAL)
+        callIntent.data = Uri.parse("tel:$number")
+        Toast.makeText(context, "Calling $number", Toast.LENGTH_SHORT).show()
+        startActivity(context,callIntent, Bundle())
+    }
 }

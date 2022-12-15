@@ -18,9 +18,13 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.nightlifeapp.*
 import com.example.nightlifeapp.R
 import com.parse.*
+import kotlin.math.round
 
 
 class ProfileFragment : Fragment(), FormDialogFragment.FormDialogListener{
@@ -31,7 +35,6 @@ class ProfileFragment : Fragment(), FormDialogFragment.FormDialogListener{
     lateinit var tvName: TextView
     lateinit var tvEmail: TextView
     lateinit var ivProfile: ImageView
-    lateinit var userInfo: MutableList<ParseUser>
     var contacts: MutableList<EmergencyContact> = mutableListOf()
 
     override fun onCreateView(
@@ -45,7 +48,6 @@ class ProfileFragment : Fragment(), FormDialogFragment.FormDialogListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
-        userInfo = queryUser(ParseUser.getCurrentUser())
         btEdit = view.findViewById(R.id.btEditProfile)
         tvName = view.findViewById(R.id.tvName)
         tvEmail = view.findViewById(R.id.tvEmail)
@@ -56,10 +58,6 @@ class ProfileFragment : Fragment(), FormDialogFragment.FormDialogListener{
         contactsRv.layoutManager = LinearLayoutManager(requireContext())
         addButton = view.findViewById(R.id.btAdd)
 
-        val userH : User = userInfo.get(0) as User
-
-        tvName.text = String.format("%s %s",userH.getFirstName(), userH.getLastName())
-        tvEmail.text = userH.email
 
         addButton.setOnClickListener {
             val dialog = FormDialogFragment()
@@ -71,6 +69,7 @@ class ProfileFragment : Fragment(), FormDialogFragment.FormDialogListener{
         btEdit.setOnClickListener {
             goToEditProfile()
         }
+        queryUser(ParseUser.getCurrentUser())
         queryContact(ParseUser.getCurrentUser())
     }
 
@@ -107,7 +106,9 @@ class ProfileFragment : Fragment(), FormDialogFragment.FormDialogListener{
             } else {
                 Log.i("Success","Contact saved successfully")
                 Toast.makeText(requireContext(), "Successfully saved post", Toast.LENGTH_SHORT).show()
-                adapter.notifyDataSetChanged()
+                contacts.add(0,contact)
+                adapter.notifyItemInserted(0)
+                contactsRv.smoothScrollToPosition(0)
             }
         }
 
@@ -141,7 +142,7 @@ class ProfileFragment : Fragment(), FormDialogFragment.FormDialogListener{
         })
     }
 
-    fun queryUser(user: ParseUser): MutableList<ParseUser> {
+    fun queryUser(user: ParseUser){
         //specify which class to query
         val query= ParseUser.getQuery()
 
@@ -149,15 +150,24 @@ class ProfileFragment : Fragment(), FormDialogFragment.FormDialogListener{
         query.whereEqualTo("username",user.username)
         query.addDescendingOrder("createdAt")
         query.setLimit(20)
-        return query.find()
+        query.findInBackground {
+                userList, e ->
+                val userH : User = userList.get(0) as User
+                tvName.text = String.format("%s %s",userH.getFirstName(), userH.getLastName())
+                tvEmail.text = userH.email
+                Glide.with(this)
+                    .load(userH.getProfilePic()?.url)
+                    .error(R.drawable.image_placeholder)
+                    .transform(CircleCrop())
+                    .into(ivProfile)
+        }
     }
 
-    private fun goToEditProfile(){
+    fun goToEditProfile(){
         val fragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(com.example.nightlifeapp.R.id.flContainer, EditProfileFragment())
+        fragmentTransaction.replace(R.id.flContainer, EditProfileFragment())
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }
-
 }
