@@ -16,6 +16,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Incident"
+        android:textColor="#F4F3F3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,6 +27,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:text="Location"
+        android:textColor="#F1EEEE"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvIncident" />
 
@@ -36,6 +38,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="16dp"
         android:text="DateTime"
+        android:textColor="#F6F4F4"
         app:layout_constraintStart_toEndOf="@+id/tvIncident"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,10 +46,11 @@
         android:id="@+id/tvDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="5sp"
-        android:layout_marginLeft="16dp"
         android:text="This is the description of the crime"
+        android:textColor="#F8F5F5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.401"
