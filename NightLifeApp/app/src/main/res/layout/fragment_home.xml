@@ -9,8 +9,8 @@
         android:id="@+id/swipeContainer"
         android:layout_width="407dp"
         android:layout_height="518dp"
-        android:layout_marginStart="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.8">
@@ -28,7 +28,7 @@
         android:layout_height="54dp"
         android:ems="10"
         android:hint="Search by crime type,location,or date"
-        android:inputType="textPersonName"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/swipeContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.026"
@@ -40,11 +40,8 @@
         android:id="@+id/searchCrimeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="Search"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.619"
-        app:layout_constraintStart_toEndOf="@+id/etCrimeType"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/etCrimeType" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
