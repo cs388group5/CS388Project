@@ -246,3 +246,7 @@ There will be functionality for emergency calls to the authorities and close fri
 
 [Milestone 3 Gif]
 ![Nightlife3](https://user-images.githubusercontent.com/98711133/206345285-577c839e-10cb-4565-9405-4973d944dd08.gif)
+
+[Milestone 4 Gif]
+<img src='/sprint4.gif' title='Video Walkthrough' width='250' alt='Video Walkthrough' />
+
