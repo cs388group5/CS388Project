@@ -31,8 +31,16 @@ class SettingsFragment : Fragment() {
 
         view.findViewById<Button>(R.id.btnLogout).setOnClickListener {
            ParseUser.logOut()
-            parentFragmentManager.beginTransaction().replace(R.id.flContainer,HomeFragment()).commit()
+           goToHomePage()
         }
+    }
+
+    private fun goToHomePage(){
+        val fragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(com.example.nightlifeapp.R.id.flContainer, HomeFragment())
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 
 }

@@ -18,7 +18,6 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
-import com.parse.FindCallback
 import com.parse.ParseException
 import com.parse.ParseQuery
 import java.io.IOException
@@ -92,33 +91,13 @@ class MapFragment : Fragment() {
         )
     }
 
-    private fun getLocationFromAddress(context: Context?, strAddress: String?): LatLng? {
-        val coder = Geocoder(context)
-        val address: List<Address>?
-        var latLngLocation: LatLng? = null
-        try {
-            // May throw an IOException
-            address = coder.getFromLocationName(strAddress, 5)
-            if (address == null) {
-                return null
-            }
-            val location: Address = address[0]
-            Log.i(TAG,"getLocationFromAddress " + location)
-            latLngLocation = LatLng(location.getLatitude(), location.getLongitude())
-        } catch (ex: IOException) {
-            ex.printStackTrace()
-            Log.e(TAG,"IO Exception")
-        }
-        return latLngLocation
-    }
-
     private fun loadMapMarkers(mMap: GoogleMap){
 
         var location:LatLng?
         queryCrimes()
         Log.i(TAG,"Finished querying crimes")
         for(crime in allCrimes){
-            location=getLocationFromAddress(this.context,crime.getLocation())
+            location= crime.getLocation()?.let { getLocationFromAddress(requireContext(), it) }
             if(location!=null){
                 Log.i(TAG,"Location: "+location.latitude+" "+location.longitude)
                 createNewMarker(location.latitude,location.longitude,mMap,
@@ -130,6 +109,30 @@ class MapFragment : Fragment() {
             }
         }
 
+    }
+
+    fun getLocationFromAddress(context: Context, strAddress: String): LatLng? {
+
+        val coder = Geocoder(context)
+        val address: List<Address>?
+        var p1: LatLng? = null
+
+        try {
+            // May throw an IOException
+            address = coder.getFromLocationName(strAddress, 5)
+            if (address == null) {
+                return null
+            }
+
+            val location = address[0]
+            p1 = LatLng(location.latitude, location.longitude)
+
+        } catch (ex: IOException) {
+
+            ex.printStackTrace()
+        }
+
+        return p1
     }
 
     private fun queryCrimes(){

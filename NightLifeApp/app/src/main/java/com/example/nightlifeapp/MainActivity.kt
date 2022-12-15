@@ -29,24 +29,15 @@ class MainActivity : AppCompatActivity() {
     fun onSettingsAction(mi: MenuItem) {
         val parseUser = ParseUser.getCurrentUser()
         val fragmentManager = supportFragmentManager
-        if (parseUser == null){
-            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(
-                com.example.nightlifeapp.R.id.flContainer,
-                LoginFragment()
-            )
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
 
-        }else {
-            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(
-                com.example.nightlifeapp.R.id.flContainer,
-                SettingsFragment()
-            )
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(
+            com.example.nightlifeapp.R.id.flContainer,
+            SettingsFragment()
+        )
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         val fragmentManager: FragmentManager = supportFragmentManager
