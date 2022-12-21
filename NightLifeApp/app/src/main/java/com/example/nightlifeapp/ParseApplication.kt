@@ -3,6 +3,7 @@ package com.example.nightlifeapp
 import android.app.Application
 import com.parse.Parse
 import com.parse.ParseObject
+import com.parse.ParseUser
 
 class ParseApplication : Application(){
 

@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.nightlifeapp.R
+import com.example.nightlifeapp.User
 import com.parse.ParseUser
 
 
@@ -51,7 +52,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun signUpUser(username: String, password: String){
-        val user = ParseUser()
+        val user = User()
 
 // Set fields for the user to be created
         user.setUsername(username)
